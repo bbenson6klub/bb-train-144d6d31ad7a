@@ -1,36 +1,14 @@
+# Disabled. The live tracker is served from
+# https://bbenson6klub.github.io/bb-train-144d6d31ad7a/
+# on the user site repo. This workflow failed on every push
+# (GitHub Pages could not be enabled on this project repo)
+# and was emailing the repo owner on each change.
 name: Deploy to GitHub Pages
-
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - run: echo "Disabled; live site is bbenson6klub.github.io/bb-train-144d6d31ad7a/"
